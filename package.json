@@ -5,7 +5,7 @@
   },
   "scripts": {
     "primary-cluster": "node ./primary-cluster/primary.js",
-    "pm2": "pm2 start index.js",
-    "git": "git add . && git commit -m \"sdasd\" && git push"
+    "pm2": "pm2 start index.js -i ",
+    "git": "git add . && git commit -m \"random mesg\" && git push"
   }
 }
