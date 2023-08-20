@@ -1,8 +1,11 @@
 {
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "pm2": "^5.3.0"
   },
   "scripts": {
+    "primary-cluster": "node ./primary-cluster/primary.js",
+    "pm2": "pm2 start index.js",
     "git": "git add . && git commit -m \"sdasd\" && git push"
   }
 }

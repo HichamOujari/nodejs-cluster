@@ -17,5 +17,5 @@ app.get("/blocking", (req, res) => {
 });
 
 app.listen(3000, () => {
-  //console.log(`The application is starting with (port = 3000) (pid = ${process.pid})`);
+  console.log(`The application is starting with (port = 3000) (pid = ${process.pid})`);
 });
