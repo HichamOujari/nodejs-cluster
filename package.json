@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "scripts": {
+    "git": "git add . && git commit -m \"sdasd\" && git push"
+  }
+}
