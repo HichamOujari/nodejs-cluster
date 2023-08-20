@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const { Worker } = require("worker_threads");
 
 app.get("/non-blocking", (req, res) => {
   console.log("====> new Request in : ", process.pid);
@@ -7,11 +8,15 @@ app.get("/non-blocking", (req, res) => {
 });
 
 app.get("/blocking", (req, res) => {
-  let counter = 0;
-  for (let i = 0; i < 2000000; i++) {
-    counter++;
-  }
-  res.status(200).send(`Blocking api (message = ${counter})`);
+  const worker = new Worker("./service.js");
+
+  worker.on("message", (message) => {
+    res.status(200).send(`Blocking api (message = ${message})`);
+  });
+
+  worker.on("error", (error) => {
+    res.status(500).send(`Blocking api (error = ${error})`);
+  });
 });
 
 app.listen(3000, () => {
