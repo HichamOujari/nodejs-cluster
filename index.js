@@ -9,7 +9,7 @@ app.get("/non-blocking", (req, res) => {
 
 app.get("/blocking", (req, res) => {
   let counter = 0;
-  for (let i = 0; i < 2000000; i++) {
+  for (let i = 0; i < 2000000000; i++) {
     counter++;
   }
   res.status(200).send(`Blocking api (message = ${counter})`);
