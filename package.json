@@ -4,7 +4,7 @@
     "pm2": "^5.3.0"
   },
   "scripts": {
-    "primary-cluster": "node ./primary-cluster/primary.js",
+    "primary-cluster": "node primary.js",
     "pm2": "pm2 start index.js -i ",
     "git": "git add . && git commit -m \"random mesg\" && git push"
   }
