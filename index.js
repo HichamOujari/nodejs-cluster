@@ -18,7 +18,7 @@ else {
   
   app.get("/blocking", (req, res) => {
     let counter = 0;
-    for (let i = 0; i < 200000000; i++) {
+    for (let i = 0; i < 20000000000; i++) {
       counter++;
     }
     res.status(200).send(`Blocking api (message = ${counter})`);
