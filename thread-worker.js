@@ -8,7 +8,7 @@ app.get("/non-blocking", (req, res) => {
 });
 
 app.get("/blocking", (req, res) => {
-  const worker = new Worker("./service.js");
+  const worker = new Worker("./service");
 
   worker.on("message", (message) => {
     res.status(200).send(`Blocking api (message = ${message})`);
