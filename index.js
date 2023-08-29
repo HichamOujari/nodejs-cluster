@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const port = process.env.port || 3000;
 
 app.get("/non-blocking", (req, res) => {
   console.log("====> new Request in : ", process.pid);
@@ -14,7 +15,7 @@ app.get("/blocking", (req, res) => {
   res.status(200).send(`Blocking api (message = ${counter})`);
 });
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log(
     `The application is starting with (port = 3000) (pid = ${process.pid})`
   );
