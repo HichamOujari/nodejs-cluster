@@ -1,6 +1,13 @@
 const express = require("express");
 const app = express();
-const port = process.env.port || 3000;
+
+const cluster = require("cluster");
+const os = require("os");
+const countCpus = os.cpus().length;
+
+if(cluster.isMaster) for (let i = 0; i < countCpus; i++)  cluster.fork();
+
+const port = process.env.port || process.pid;
 
 app.get("/non-blocking", (req, res) => {
   console.log("====> new Request in : ", process.pid);
@@ -17,6 +24,8 @@ app.get("/blocking", (req, res) => {
 
 app.listen(port, () => {
   console.log(
-    `The application is starting with (port = 3000) (pid = ${process.pid})`
+    `The application is starting with (port = ${port}) (pid = ${process.pid})`
   );
 });
+
+cluster.on("exit", (worker) => cluster.foker());

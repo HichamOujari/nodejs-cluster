@@ -1,8 +1,8 @@
 const cluster = require("cluster");
 const os = require("os");
+const countCpus = os.cpus().length;
 const { dirname } = require("path");
 const appDir = dirname(require.main.filename);
-const countCpus = os.cpus().length;
 
 cluster.setupPrimary({
   exec: `${appDir}/index.js`,
